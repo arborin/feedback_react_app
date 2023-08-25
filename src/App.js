@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn CI/CD 222
+          Learn CI/CD daisvena nijadma
         </a>
       </header>
     </div>
