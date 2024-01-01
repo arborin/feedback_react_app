@@ -5,19 +5,20 @@ export default function Auth() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [getData, setGetData] = useState(false);
     // const emailRef = useRef(null);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setGetData(true);
+        doFetch({
+            method: "get",
+            data: {}
+        })
     }
 
 
-    const { data, isLoading, error } = useFetch('https://catfact.ninja/facts')
+    const [{ data, isLoading, error }, doFetch] = useFetch('/facts')
 
     console.log(data)
-
 
     return (
         <div className='container'>
@@ -48,7 +49,7 @@ export default function Auth() {
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                         <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                     </div>
-                    <button disabled={getData} type="submit" className="btn btn-primary">Submit</button>
+                    <button disabled={isLoading} type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
