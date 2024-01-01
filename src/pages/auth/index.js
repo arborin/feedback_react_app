@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import useFetch from '../../hooks/useFetch';
 
 export default function Auth() {
 
@@ -8,41 +8,23 @@ export default function Auth() {
     const [getData, setGetData] = useState(false);
     // const emailRef = useRef(null);
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setGetData(true);
-        // console.log(emailRef.current.value, password);
     }
 
 
-    useEffect(() => {
-        document.title = 'Home';
-        console.log("USE EFFECT TRIGERED!");
+    const { data, isLoading, error } = useFetch('https://catfact.ninja/facts')
 
-        if (getData) {
-            console.log("GET DATA");
-            axios.get('https://catfact.ninja/facts', {
+    console.log(data)
 
-            }).then(function (res) {
-                console.log(res)
-                setGetData(false);
-            }).catch((error) => {
-                console.log(error);
-                setGetData(false);
-            });
-        }
-        // axios.post("https://catfact.ninja/facts", {
-
-        // }).then(function (res) {
-
-        // });
-    }, [getData]);
 
     return (
         <div className='container'>
             <div className='col-md-6 offset-md-3 mt-4'>
+                <h1>{isLoading}</h1>
+                <h1>{error}</h1>
+
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
