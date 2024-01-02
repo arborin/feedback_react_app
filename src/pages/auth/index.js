@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useLocation } from 'react'
 import useFetch from '../../hooks/useFetch';
 import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 
 export default function Auth(props) {
@@ -13,6 +14,7 @@ export default function Auth(props) {
     const [username, setUsername] = useState('');
     const [successSubmit, setSuccessSubmit] = useState(false);
     const navigate = useNavigate()
+    const [token, setToken] = useLocalStorage('token')
     // const emailRef = useRef(null);
 
 
@@ -43,7 +45,7 @@ export default function Auth(props) {
         }
         const fact = data.data[0].fact
         console.log("GET DATA", fact);
-        localStorage.setItem('fact', fact)
+        // localStorage.setItem('fact', fact)
         setSuccessSubmit(true)
     }, [data])
 
