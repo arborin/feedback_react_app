@@ -12,19 +12,19 @@ const useFetch = (url) => {
         setIsLoading(true)
         setOptions(options)
 
-        console.log(options);
+        // console.log(options);
     }
 
 
     useEffect(() => {
         setData(null)
         setError(null)
-        console.log("RUN")
+        // console.log("RUN")
         if (isLoading) {
             axios(baseUrl + url, options).then(function (res) {
                 setIsLoading(false)
                 setData(res.data);
-                console.log(res.data)
+                // console.log(res.data)
             }).catch((error) => {
                 setIsLoading(false)
                 console.log(error);

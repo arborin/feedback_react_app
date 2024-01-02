@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useLocation } from 'react'
 import useFetch from '../../hooks/useFetch';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 export default function Auth(props) {
     const isLogin = props.isLogin
-    console.log("IS LOGIN: ", isLogin)
     const title = isLogin ? "Login" : "Register"
     const link = isLogin ? "/register" : "/login"
     const descriotion = isLogin ? "Register" : "Login"
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [successSubmit, setSuccessSubmit] = useState(false);
+    const navigate = useNavigate()
     // const emailRef = useRef(null);
 
 
     const user = isLogin ? { email, password } : { email, username, password }
 
-    console.log(props)
+    // console.log(props)
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Click!")
@@ -24,10 +26,27 @@ export default function Auth(props) {
             method: "get",
             data: { user }
         })
+
+        if (successSubmit) {
+            console.log("REDIRECT TO HOME");
+            navigate('/')
+        }
     }
 
 
     const [{ data, isLoading, error }, doFetch] = useFetch('/facts')
+
+
+    useEffect(() => {
+        if (!data) {
+            return
+        }
+        const fact = data.data[0].fact
+        console.log("GET DATA", fact);
+        localStorage.setItem('fact', fact)
+        setSuccessSubmit(true)
+    }, [data])
+
 
 
     return (
