@@ -9,7 +9,8 @@ export default function Router() {
         <Routes>
             <Route path="/" element={<Article />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Auth />} />
+            <Route path="/login" element={<Auth isLogin={true} />} />
+            <Route path="/register" element={<Auth isLogin={false} />} />
 
         </Routes>
     )

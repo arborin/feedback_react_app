@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 import useFetch from '../../hooks/useFetch';
+import { Link } from 'react-router-dom';
 
-export default function Auth() {
-
+export default function Auth(props) {
+    const isLogin = props.isLogin
+    console.log("IS LOGIN: ", isLogin)
+    const title = isLogin ? "Login" : "Register"
+    const link = isLogin ? "/register" : "/login"
+    const descriotion = isLogin ? "Register" : "Login"
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     // const emailRef = useRef(null);
-
+    console.log(props)
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("Click!")
         doFetch({
             method: "get",
             data: {}
@@ -18,15 +25,24 @@ export default function Auth() {
 
     const [{ data, isLoading, error }, doFetch] = useFetch('/facts')
 
-    console.log(data)
 
     return (
         <div className='container'>
             <div className='col-md-6 offset-md-3 mt-4'>
-                <h1>{isLoading}</h1>
-                <h1>{error}</h1>
+                <h1>{title}</h1>
 
                 <form onSubmit={handleSubmit}>
+                    {!isLogin && (
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Username</label>
+                            <input type="text"
+                                className="form-control"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                    )}
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
                         <input type="email"
@@ -46,10 +62,9 @@ export default function Auth() {
                         />
                     </div>
                     <div className="form-group form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                        <Link to={link}>{descriotion}</Link>
                     </div>
-                    <button disabled={isLoading} type="submit" className="btn btn-primary">Submit</button>
+                    <button disabled={isLoading} type="submit" className="btn btn-primary">{title}</button>
                 </form>
             </div>
         </div>
