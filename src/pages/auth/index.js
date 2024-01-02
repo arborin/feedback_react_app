@@ -12,13 +12,17 @@ export default function Auth(props) {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     // const emailRef = useRef(null);
+
+
+    const user = isLogin ? { email, password } : { email, username, password }
+
     console.log(props)
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Click!")
         doFetch({
             method: "get",
-            data: {}
+            data: { user }
         })
     }
 

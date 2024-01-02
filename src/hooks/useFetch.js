@@ -11,6 +11,8 @@ const useFetch = (url) => {
     const doFetch = (options = {}) => {
         setIsLoading(true)
         setOptions(options)
+
+        console.log(options);
     }
 
 
