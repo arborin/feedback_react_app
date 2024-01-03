@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLocation } from 'react'
+import React, { useEffect, useState } from 'react'
 import useFetch from '../../hooks/useFetch';
 import { Link, useNavigate } from 'react-router-dom';
 import useLocalStorage from '../../hooks/useLocalStorage';
@@ -41,21 +41,33 @@ export default function Auth(props) {
 
     useEffect(() => {
         if (!data) {
-            return
+            return;
         }
-        const fact = data.data[0].fact
-        console.log("GET DATA", fact);
-        // localStorage.setItem('fact', fact)
-        setSuccessSubmit(true)
-    }, [data])
 
+        // Assuming data is an array and has at least one element
+        const fact = data?.[0]?.fact;
+
+        if (!fact) {
+            console.error("Data is missing the expected 'fact' property.");
+            return;
+        }
+
+        console.log("GET DATA:", fact);
+
+        // Uncomment the line below if you want to store 'fact' in localStorage
+        // localStorage.setItem('fact', fact);
+
+        setToken(fact);
+        setSuccessSubmit(true);
+
+    }, [data, setToken, setSuccessSubmit]);
 
 
     return (
         <div className='container'>
             <div className='col-md-6 offset-md-3 mt-4'>
                 <h1>{title}</h1>
-
+                {error && (<h1>{error}</h1>)}
                 <form onSubmit={handleSubmit}>
                     {!isLogin && (
                         <div className="form-group">

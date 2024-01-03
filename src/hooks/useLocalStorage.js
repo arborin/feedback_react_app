@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const useLocalStorage = (key, value = '') => {
+const useLocalStorage = (key, initValue = '') => {
     const [value, setValue] = useState(() => {
-        return localStorage.getItem(key) || value
+        return localStorage.getItem(key) || initValue
     })
 
     useEffect(() => {
-        localStorage.setValue(key, value)
-    }, [value])
+        localStorage.setItem(key, initValue)
+    }, [value, initValue, key])
 
     return [value, setValue]
 
