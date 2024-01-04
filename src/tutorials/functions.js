@@ -24,3 +24,9 @@ function maxnum(a, b, ...numbers) {
 
 maxnum(12, 3, 4, 5, 6, 3)
 maxnum()
+
+// SPRED OPERATOR
+const names = ["bob", "john"]
+
+let test = [...names] // copy of array
+console.log(test)
