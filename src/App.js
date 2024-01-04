@@ -8,9 +8,9 @@ import TodoList from "./components/todo-list";
 function App() {
 
   const todoData = [
-    { label: 'php', important: false },
-    { label: 'react', important: true },
-    { label: 'laravel', important: true },
+    { label: 'php', important: false, id: 1 },
+    { label: 'react', important: true, id: 2 },
+    { label: 'laravel', important: true, id: 3 },
   ]
 
   return (
