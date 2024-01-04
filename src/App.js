@@ -1,14 +1,24 @@
-import { BrowserRouter } from "react-router-dom";
-import Routes from "./Router";
-import Topbar from "./components/topbar"
+import AppHeader from "./components/app-header";
+import SearchPanel from "./components/search-panel";
+import TodoList from "./components/todo-list";
+
+
+
 
 function App() {
-  return (
 
-    <BrowserRouter>
-      <Topbar />
-      <Routes />
-    </BrowserRouter>
+  const todoData = [
+    { label: 'php', important: false },
+    { label: 'react', important: true },
+    { label: 'laravel', important: true },
+  ]
+
+  return (
+    <>
+      <AppHeader />
+      <SearchPanel />
+      <TodoList todos={todoData} />
+    </>
   );
 }
 
