@@ -15,3 +15,12 @@ console.log(temp)
 
 max = temp.reduce((max, value) => Math.max(max, value), 0)
 console.log(max)
+
+
+// rest parameters
+function maxnum(a, b, ...numbers) {
+    console.log(numbers)
+}
+
+maxnum(12, 3, 4, 5, 6, 3)
+maxnum()
