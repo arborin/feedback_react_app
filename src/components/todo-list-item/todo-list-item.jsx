@@ -11,31 +11,13 @@ const TodoListItemFunc = ({ label, important = false }) => {
 
 class TodoListItem extends React.Component {
 
-    state = {
-        done: false,
-        important: false
-    }
-
-    onLabelClick = () => {
-        console.log(`Done ${this.props.label}`)
-        this.setState({
-            done: !this.state.done,
-        })
-    }
-
-    onMarkImportant = () => {
-        console.log("make important")
-        this.setState({
-            important: !this.state.important
-        })
-    }
-
 
 
     render() {
-        const { label, onDeleted } = this.props
+        const { label, onDeleted,
+            onToggleDone,
+            onToggleImportant, important, done } = this.props
 
-        const { done, important } = this.state;
 
         let classNames = 'todo-list-item'
 
@@ -52,7 +34,8 @@ class TodoListItem extends React.Component {
                 {label}
             </span>
             <button onClick={onDeleted} className='btn btn-sm btn-danger'>delete</button>
-            <button onClick={this.onMarkImportant} className='btn btn-sm btn-warning'>Important</button>
+            <button onClick={onToggleImportant} className='btn btn-sm btn-warning'>Important</button>
+            <button onClick={onToggleDone} className='btn btn-sm btn-warning'>Done</button>
         </span>)
     }
 }
