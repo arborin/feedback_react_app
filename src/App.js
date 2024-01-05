@@ -1,6 +1,7 @@
 import AppHeader from "./components/app-header";
 import SearchPanel from "./components/search-panel";
 import TodoList from "./components/todo-list"
+import ItemStatusFilter from "./components/item-status-filter";
 
 
 
@@ -17,7 +18,8 @@ function App() {
     <>
       <AppHeader />
       <SearchPanel />
-      <TodoList todos={todoData} />
+      <ItemStatusFilter />
+      <TodoList todos={todoData} onDeleted={(id) => console.log('del', id)} />
     </>
   );
 }
