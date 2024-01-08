@@ -38,6 +38,7 @@ class App extends React.Component {
 
   addItem = (text) => {
     // generate id,
+    console.log("GET TEXT: ", text)
     const newItem = this.createTodoItem(text)
     this.setState(
       { todoData: [...this.state.todoData, newItem] }
