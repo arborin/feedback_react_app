@@ -14,10 +14,19 @@ class App extends React.Component {
 
   state = {
     todoData: [
-      { label: 'php', important: false, id: 1 },
-      { label: 'react', important: true, id: 2 },
-      { label: 'laravel', important: true, id: 3 },
+      this.createTodoItem('php'),
+      this.createTodoItem('react'),
+      this.createTodoItem('laravel')
     ]
+  }
+
+  createTodoItem(label) {
+    return {
+      label: label,
+      important: false,
+      done: false,
+      id: this.maxId++,
+    }
   }
 
 
@@ -29,11 +38,7 @@ class App extends React.Component {
 
   addItem = (text) => {
     // generate id,
-    const newItem = {
-      label: text,
-      important: false,
-      id: this.maxId++
-    }
+    const newItem = this.createTodoItem(text)
     this.setState(
       { todoData: [...this.state.todoData, newItem] }
     )
