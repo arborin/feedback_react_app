@@ -46,10 +46,18 @@ class App extends React.Component {
 
   onToggleImportant = (id) => {
     console.log("IMPORTANT!" + id)
+
+    let newData = this.state.todoData.filter((el) => { if (el.id == id) { el.important = !el.important; } return el });
+
+    this.setState({ 'todoData': newData });
+
   }
 
   onToggleDone = (id) => {
     console.log("DONE" + id)
+    let newData = this.state.todoData.filter((el) => { if (el.id == id) { el.done = !el.done; } return el });
+
+    this.setState({ 'todoData': newData });
   }
 
   render() {
