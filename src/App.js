@@ -17,7 +17,8 @@ class App extends React.Component {
       this.createTodoItem('php'),
       this.createTodoItem('react'),
       this.createTodoItem('laravel')
-    ]
+    ],
+    term: ''
   }
 
   createTodoItem(label) {
@@ -61,13 +62,30 @@ class App extends React.Component {
     this.setState({ 'todoData': newData });
   }
 
+  search = (items, term) => {
+    if (term.length == 0) {
+      return items
+    }
+
+    // let newData = items.filter((el) => { el.label.indexOf(term) > -1 });
+
+    // return newData
+  }
+
   render() {
+    const { todoData, term } = this.state
+    console.log(todoData)
+
+    const fisibleItems = this.search(todoData, term);
+
+    const doneCount = this.state.todoData.filter((el) => !el.done).length
+    const todoCount = this.state.todoData.length - doneCount
     return (
       <>
-        <AppHeader />
+        <AppHeader todo={doneCount} done={todoCount} />
         <SearchPanel />
         <ItemStatusFilter />
-        <TodoList todos={this.state.todoData}
+        <TodoList todos={todoData}
           onDeleted={this.deleteItem}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
