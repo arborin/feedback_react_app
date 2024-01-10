@@ -64,13 +64,17 @@ class App extends React.Component {
   }
 
   search = (items, term) => {
-    if (term.length == 0) {
+    console.log(term)
+    console.log(term.trim().length)
+    if (term.trim().length == 0) {
       return items
     }
 
-    // let newData = items.filter((el) => { el.label.indexOf(term) > -1 });
+    console.log(term);
 
-    // return newData
+    let newData = items.filter((el) => el.label.indexOf(term) > -1);
+
+    return newData
   }
 
   toggleProperty = (arr, id, propName) => {
@@ -78,20 +82,29 @@ class App extends React.Component {
     return newData
   }
 
+  onSearchChange = (search) => {
+    this.setState({ term: search })
+  }
+
+
   render() {
     const { todoData, term } = this.state
     console.log(todoData)
 
-    const fisibleItems = this.search(todoData, term);
+    const visibleItems = this.search(todoData, term);
+
+
+
 
     const doneCount = this.state.todoData.filter((el) => !el.done).length
     const todoCount = this.state.todoData.length - doneCount
+
     return (
       <>
         <AppHeader todo={doneCount} done={todoCount} />
-        <SearchPanel />
+        <SearchPanel onSearchChange={this.onSearchChange} />
         <ItemStatusFilter />
-        <TodoList todos={todoData}
+        <TodoList todos={visibleItems}
           onDeleted={this.deleteItem}
           onToggleImportant={this.onToggleImportant}
           onToggleDone={this.onToggleDone}
