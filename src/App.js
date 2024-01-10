@@ -47,19 +47,20 @@ class App extends React.Component {
   }
 
   onToggleImportant = (id) => {
-    console.log("IMPORTANT!" + id)
+    // console.log("IMPORTANT!" + id)
 
-    let newData = this.state.todoData.filter((el) => { if (el.id == id) { el.important = !el.important; } return el });
+    // let newData = this.state.todoData.filter((el) => { if (el.id == id) { el.important = !el.important; } return el });
 
-    this.setState({ 'todoData': newData });
-
+    // this.setState({ 'todoData': newData });
+    this.setState({ 'todoData': this.toggleProperty(this.state.todoData, id, 'important') })
   }
 
   onToggleDone = (id) => {
-    console.log("DONE" + id)
-    let newData = this.state.todoData.filter((el) => { if (el.id == id) { el.done = !el.done; } return el });
+    // console.log("DONE" + id)
+    // let newData = this.state.todoData.filter((el) => { if (el.id == id) { el.done = !el.done; } return el });
 
-    this.setState({ 'todoData': newData });
+    // this.setState({ 'todoData': newData });
+    this.setState({ 'todoData': this.toggleProperty(this.state.todoData, id, 'done') })
   }
 
   search = (items, term) => {
@@ -70,6 +71,11 @@ class App extends React.Component {
     // let newData = items.filter((el) => { el.label.indexOf(term) > -1 });
 
     // return newData
+  }
+
+  toggleProperty = (arr, id, propName) => {
+    let newData = arr.filter((el) => { if (el.id == id) { el[propName] = !el[propName]; } return el });
+    return newData
   }
 
   render() {
