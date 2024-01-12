@@ -16,12 +16,21 @@ class ApiService {
         return body
     }
 
-    getPosts() {
-        return this.getResource(`/posts`)
+    async getPosts() {
+        const posts = await this.getResource(`/posts`)
+        return posts.map(this._transformPostData)
     }
 
-    getPost(id) {
-        return this.getResource(`/posts/${id}`)
+    async getPost(id) {
+        return await this._transformPostData(this.getResource(`/posts/${id}`))
+    }
+
+    _transformPostData(post) {
+        return {
+            id: post.id,
+            title: post.title,
+            category: post.category
+        }
     }
 }
 

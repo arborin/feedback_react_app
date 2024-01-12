@@ -27,7 +27,7 @@ class Posts extends React.Component {
 
 
         const { posts, name } = this.state;
-
+        console.log(posts)
         return (
             <>
                 <h4>{name}</h4>
