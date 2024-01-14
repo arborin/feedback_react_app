@@ -8,30 +8,42 @@ class Posts extends React.Component {
     state = {
         name: null,
         posts: null,
-        loading: true
+        loading: true,
+        error: false
     }
 
     apiService = new ApiService();
 
 
-    getPostList() {
+    getPostList = () => {
         this.apiService.getPosts().then((posts) => {
             this.setState({ posts: posts, loading: false })
+        }).catch(this.onError)
+    }
+
+    onError = (error) => {
+        this.setState({
+            error: true,
+            loading: false
         })
     }
 
     constructor() {
         super()
         this.getPostList()
+
+        this.interval = setInterval(this.getPostList, 10000)
+        // clearInterval(this.interval)
     }
 
     render() {
 
 
-        const { posts, name, loading } = this.state;
+        const { posts, name, loading, error } = this.state;
         console.log(posts)
         return (
             <>
+                {error && <>ERROR</>}
                 <PostList name={name} posts={posts} loading={loading} />
             </>
         )
@@ -39,6 +51,8 @@ class Posts extends React.Component {
 }
 
 const PostList = ({ name, loading, posts }) => {
+
+
     return (
         <>
             <h4>{name}</h4>
