@@ -1,14 +1,10 @@
-import Header from "./components/header";
-import Posts from "./components/posts";
 
 export default function App() {
   return (
-    <><div className="container">
-      <Header />
-
-      <Posts />
-    </div>
-
+    <>
+      <div className="container">
+        <h1>Hooks</h1>
+      </div>
     </>
   )
 }
