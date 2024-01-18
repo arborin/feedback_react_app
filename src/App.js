@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, useContext } from "react"
 
 const MyContext = React.createContext();
@@ -9,6 +9,7 @@ export default function App() {
       <div className="container">
         <h1>Hooks</h1>
         <Child />
+        <HookCounter value={100} />
       </div>
     </MyContext.Provider>
   )
@@ -21,6 +22,12 @@ const Child = () => {
   )
 }
 
+const HookCounter = ({ value }) => {
+  useEffect(() => {
+    console.log("USE EFFECT");
+  }, [])
+  return <p>{value}</p>
+}
 
 // const HookSwitch = () => {
 
