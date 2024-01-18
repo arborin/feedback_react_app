@@ -1,60 +1,52 @@
 import React, { useEffect } from "react";
-import { useState, useContext } from "react"
+import { useState } from "react"
 
-const MyContext = React.createContext();
 
 export default function App() {
+  const [value, setValue] = useState(1)
+
   return (
-    <MyContext.Provider value="HELLO">
-      <div className="container">
-        <h1>Hooks</h1>
-        <Child />
-        <HookCounter value={100} />
-        <Notification />
-      </div>
-    </MyContext.Provider>
+    <div className="container">
+      <h1>Hooks</h1>
+      <button className="btn btn-primary" onClick={() => setValue(value + 1)}>Next</button>
+      <button className="btn btn-warning" onClick={() => setValue(value - 1)}>Prev</button>
+      <PostDetails id={value} />
+    </div>
+
   )
 }
 
-const Child = () => {
-  const value = useContext(MyContext);
+
+
+const PostDetails = ({ id }) => {
+
+  // console.log(id)
+  const title = usePostTitle(id)
+
   return (
-    <p>{value}</p>
+    <div>
+      {id} - {title}
+    </div>
   )
 }
 
-const HookCounter = ({ value }) => {
+
+const usePostTitle = (id) => {
+  console.log(id)
+  const [title, setTitle] = useState('');
+
   useEffect(() => {
-    console.log("USE EFFECT");
-  }, [])
-  return <p>{value}</p>
+    let cancelled = false
+
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json.title);
+        !cancelled && setTitle(json.title)
+      })
+
+    return () => { console.log("CANCELED!"); cancelled = true }
+  }, [id])
+
+  return title
 }
-
-const Notification = () => {
-  const [visible, setVisible] = useState(true);
-  useEffect(() => {
-    const timeout = setTimeout(() => setVisible(false), 2500);
-
-    return () => clearTimeout(timeout);
-
-  }, [])
-  return (<div>
-    {visible && <p>notification</p>}
-  </div>)
-}
-
-// const HookSwitch = () => {
-
-//   const [color, setColor] = useState('white')
-//   const [fontSize, setFontSize] = useState(14)
-
-//   return (
-//     <div style={{ background: color, fontSize: fontSize }}>
-//       <p>some text for fontsize test</p>
-//       <button className="btn btn-primary" onClick={() => setColor('white')}>Light</button>
-//       <button className="btn btn-warning" onClick={() => setColor('black')}>Dark</button>
-//       <button className="btn btn-warning" onClick={() => setFontSize(fontSize + 2)}>+</button>
-//       <button className="btn btn-warning" onClick={() => setFontSize(fontSize - 2)}>-</button>
-//     </div>
-//   )
-// }
