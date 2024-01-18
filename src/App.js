@@ -10,6 +10,7 @@ export default function App() {
         <h1>Hooks</h1>
         <Child />
         <HookCounter value={100} />
+        <Notification />
       </div>
     </MyContext.Provider>
   )
@@ -27,6 +28,19 @@ const HookCounter = ({ value }) => {
     console.log("USE EFFECT");
   }, [])
   return <p>{value}</p>
+}
+
+const Notification = () => {
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const timeout = setTimeout(() => setVisible(false), 2500);
+
+    return () => clearTimeout(timeout);
+
+  }, [])
+  return (<div>
+    {visible && <p>notification</p>}
+  </div>)
 }
 
 // const HookSwitch = () => {
