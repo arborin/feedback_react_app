@@ -7,3 +7,9 @@ import * as util from './util.js'
 
 console.log(util.key)
 console.log(util.name)
+
+function greet() {
+    console.log("hello")
+}
+
+greet()
