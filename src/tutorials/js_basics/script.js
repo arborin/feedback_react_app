@@ -76,6 +76,21 @@ const user = {
     age: 12
 }
 
-const { name, age } = user
-console.log(name)
-console.log(age)
+// const { name, age } = user
+// console.log(name)
+// console.log(age)
+
+// SPRED OPERATOR
+const array = [...ages]
+console.log(array)
+
+const new_user = {
+    address: "tbilisi",
+    ...user
+}
+
+console.log(new_user)
+
+for (const age of ages) {
+    console.log(age)
+}
