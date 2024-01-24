@@ -94,3 +94,23 @@ console.log(new_user)
 for (const age of ages) {
     console.log(age)
 }
+
+// functions as arguments
+setTimeout(() => console.log("DONE"), 1000)
+
+
+function greeter(greetFn) {
+    greetFn();
+}
+
+greeter(() => { console.log("HI") })
+
+function init() {
+    function hi() {
+        console.log("Hi all!")
+    }
+
+    hi()
+}
+
+init()
