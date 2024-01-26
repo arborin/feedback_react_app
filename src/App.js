@@ -1,32 +1,21 @@
-import logo from './assets/img/logo.png'
+
+import Header from './components/Header'
+import CoreConcepts from './components/CoreConcept'
+import Learning from './data'
 
 export default function App() {
+  console.log(Learning)
   return (
     <div className="container">
       <Header />
       <ul>
-        <CoreConcepts title="Learning React" hours={72.5} />
+        <CoreConcepts {...Learning[0]} />
         <CoreConcepts title="PHP/Laravel" hours={55.5} />
       </ul>
     </div>
   )
 }
 
-function Header() {
 
-  return (
-    <header>
-      <img src={logo} alt='logo' height={80} />
-    </header>)
-}
-
-function CoreConcepts({ title, hours }) {
-  return (
-    <li>
-      <p>{title}</p>
-      <p>time: {hours} h</p>
-    </li>
-  )
-}
 
 
