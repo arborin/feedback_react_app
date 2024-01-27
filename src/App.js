@@ -16,7 +16,9 @@ export default function App() {
       <section>
         <h2>Examples</h2>
         <menu>
-          <TabButton>Component</TabButton>
+          <TabButton>React</TabButton>
+          <TabButton>Laravel</TabButton>
+          <TabButton>PHP</TabButton>
         </menu>
       </section>
     </div>
