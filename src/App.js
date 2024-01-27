@@ -16,10 +16,13 @@ export default function App() {
       <section>
         <h2>Examples</h2>
         <menu>
-          <TabButton>React</TabButton>
+          <TabButton myClickFunc={() => { console.log("HA HA HA") }}>React</TabButton>
           <TabButton>Laravel</TabButton>
           <TabButton>PHP</TabButton>
         </menu>
+      </section>
+      <section>
+        CONTENT
       </section>
     </div>
   )

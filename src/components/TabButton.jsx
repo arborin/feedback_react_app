@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function TabButton({ children }) {
+export default function TabButton({ children, myClickFunc }) {
 
-    const handleClick = () => {
-        console.log("CLICK!")
-    }
+    // const handleClick = () => {
+    //     myClickFunc()
+    // }
 
     return (
         <li className='mb-4'>
-            <button onClick={handleClick} className='btn btn-success'>{children}</button>
+            <button onClick={myClickFunc} className='btn btn-success'>{children}</button>
         </li>
     )
 }
