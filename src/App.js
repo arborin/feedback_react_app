@@ -1,7 +1,8 @@
 
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import CoreConcepts from './components/CoreConcept'
 import Learning from './data'
+import TabButton from './components/TabButton'
 
 export default function App() {
   console.log(Learning)
@@ -12,6 +13,12 @@ export default function App() {
         <CoreConcepts {...Learning[0]} />
         <CoreConcepts title="PHP/Laravel" hours={55.5} />
       </ul>
+      <section>
+        <h2>Examples</h2>
+        <menu>
+          <TabButton>Component</TabButton>
+        </menu>
+      </section>
     </div>
   )
 }
