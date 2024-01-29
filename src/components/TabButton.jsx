@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TabButton({ children, myClickFunc }) {
+export default function TabButton({ children, onSelect }) {
 
     // const handleClick = () => {
     //     myClickFunc()
@@ -8,7 +8,7 @@ export default function TabButton({ children, myClickFunc }) {
 
     return (
         <li className='mb-4'>
-            <button onClick={myClickFunc} className='btn btn-success'>{children}</button>
+            <button onClick={onSelect} className='btn btn-success'>{children}</button>
         </li>
     )
 }

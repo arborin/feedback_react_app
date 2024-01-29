@@ -5,7 +5,12 @@ import Learning from './data'
 import TabButton from './components/TabButton'
 
 export default function App() {
-  console.log(Learning)
+
+
+  const handleSelect = (value) => {
+    console.log("HANDLE SELECT: " + value)
+  }
+
   return (
     <div className="container">
       <Header />
@@ -16,15 +21,15 @@ export default function App() {
       <section>
         <h2>Examples</h2>
         <menu>
-          <TabButton myClickFunc={() => { console.log("HA HA HA") }}>React</TabButton>
-          <TabButton>Laravel</TabButton>
-          <TabButton>PHP</TabButton>
+          <TabButton onSelect={() => handleSelect('react')}>React</TabButton>
+          <TabButton onSelect={() => handleSelect('laravel')}>Laravel</TabButton>
+          <TabButton onSelect={() => handleSelect('php')}>PHP</TabButton>
         </menu>
       </section>
       <section>
         CONTENT
       </section>
-    </div>
+    </div >
   )
 }
 
