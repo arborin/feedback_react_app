@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export default function App() {
 
-  const [tabContent, setTabContent] = useState('react');
+  const [tabContent, setTabContent] = useState();
 
   const handleSelect = (value) => {
     console.log("HANDLE SELECT: " + value)
@@ -26,10 +26,13 @@ export default function App() {
         </menu>
       </section>
       <section>
+        {!tabContent ? <p>please select topic</p> :
 
-        <h3>{Learning[tabContent]['title']}</h3>
-        <p>{Learning[tabContent]['hours']} hours</p>
-        <p>{Learning[tabContent]['content']}</p>
+          (<div><h3>{Learning[tabContent]['title']}</h3>
+            <p>{Learning[tabContent]['hours']} hours</p>
+            <p>{Learning[tabContent]['content']}</p>
+          </div>)
+        }
       </section>
     </div>
   )
