@@ -3,12 +3,15 @@ import Header from './components/Header/Header'
 import CoreConcepts from './components/CoreConcept'
 import Learning from './data'
 import TabButton from './components/TabButton'
+import { useState } from 'react'
 
 export default function App() {
 
+  const [tabContent, setTabContent] = useState('new tab');
 
   const handleSelect = (value) => {
     console.log("HANDLE SELECT: " + value)
+    setTabContent(value)
   }
 
   return (
@@ -27,9 +30,9 @@ export default function App() {
         </menu>
       </section>
       <section>
-        CONTENT
+        {tabContent}
       </section>
-    </div >
+    </div>
   )
 }
 
