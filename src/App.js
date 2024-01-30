@@ -14,6 +14,15 @@ export default function App() {
     setTabContent(value)
   }
 
+  let content = <p>please select topic</p>
+
+  if (tabContent) {
+    content = <div><h3>{Learning[tabContent]['title']}</h3>
+      <p>{Learning[tabContent]['hours']} hours</p>
+      <p>{Learning[tabContent]['content']}</p>
+    </div>
+  }
+
   return (
     <div className="container">
       <Header />
@@ -26,13 +35,7 @@ export default function App() {
         </menu>
       </section>
       <section>
-        {!tabContent ? <p>please select topic</p> :
-
-          (<div><h3>{Learning[tabContent]['title']}</h3>
-            <p>{Learning[tabContent]['hours']} hours</p>
-            <p>{Learning[tabContent]['content']}</p>
-          </div>)
-        }
+        {content}
       </section>
     </div>
   )
