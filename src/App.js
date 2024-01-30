@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export default function App() {
 
-  const [tabContent, setTabContent] = useState('new tab');
+  const [tabContent, setTabContent] = useState('react');
 
   const handleSelect = (value) => {
     console.log("HANDLE SELECT: " + value)
@@ -17,20 +17,19 @@ export default function App() {
   return (
     <div className="container">
       <Header />
-      <ul>
-        <CoreConcepts {...Learning[0]} />
-        <CoreConcepts title="PHP/Laravel" hours={55.5} />
-      </ul>
       <section>
         <h2>Examples</h2>
         <menu>
           <TabButton onSelect={() => handleSelect('react')}>React</TabButton>
-          <TabButton onSelect={() => handleSelect('laravel')}>Laravel</TabButton>
-          <TabButton onSelect={() => handleSelect('php')}>PHP</TabButton>
+          <TabButton onSelect={() => handleSelect('php')}>Laravel</TabButton>
+          <TabButton onSelect={() => handleSelect('security')}>PHP</TabButton>
         </menu>
       </section>
       <section>
-        {tabContent}
+
+        <h3>{Learning[tabContent]['title']}</h3>
+        <p>{Learning[tabContent]['hours']} hours</p>
+        <p>{Learning[tabContent]['content']}</p>
       </section>
     </div>
   )
