@@ -29,9 +29,9 @@ export default function App() {
       <section>
         <h2>Examples</h2>
         <menu>
-          <TabButton onSelect={() => handleSelect('react')}>React</TabButton>
-          <TabButton onSelect={() => handleSelect('php')}>Laravel</TabButton>
-          <TabButton onSelect={() => handleSelect('security')}>PHP</TabButton>
+          <TabButton isSelected={tabContent == 'react'} onSelect={() => handleSelect('react')}>React</TabButton>
+          <TabButton isSelected={tabContent == 'php'} onSelect={() => handleSelect('php')}>Laravel</TabButton>
+          <TabButton isSelected={tabContent == 'security'} onSelect={() => handleSelect('security')}>PHP</TabButton>
         </menu>
       </section>
       <section>
