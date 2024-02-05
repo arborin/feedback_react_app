@@ -1,9 +1,11 @@
 
 import Header from './components/Header/Header'
-import CoreConcepts from './components/CoreConcept'
+// import CoreConcepts from './components/CoreConcept'
 import Learning from './data'
 import TabButton from './components/TabButton'
 import { useState } from 'react'
+import Section from './components/Section'
+import Tabs from './components/Tabs'
 
 export default function App() {
 
@@ -26,17 +28,22 @@ export default function App() {
   return (
     <div className="container">
       <Header />
-      <section>
-        <h2>Examples</h2>
+      <Section title='Web Page'>
+        <Tabs buttons={<>
+          <TabButton isSelected={tabContent === 'react'} onSelect={() => handleSelect('react')}>React</TabButton>
+          <TabButton isSelected={tabContent === 'php'} onSelect={() => handleSelect('php')}>Laravel</TabButton>
+          <TabButton isSelected={tabContent === 'security'} onSelect={() => handleSelect('security')}>PHP</TabButton>
+        </>}>
+
+          <section>
+            {content}
+          </section>
+        </Tabs>
         <menu>
-          <TabButton isSelected={tabContent == 'react'} onSelect={() => handleSelect('react')}>React</TabButton>
-          <TabButton isSelected={tabContent == 'php'} onSelect={() => handleSelect('php')}>Laravel</TabButton>
-          <TabButton isSelected={tabContent == 'security'} onSelect={() => handleSelect('security')}>PHP</TabButton>
+
         </menu>
-      </section>
-      <section>
-        {content}
-      </section>
+      </Section>
+
     </div>
   )
 }
