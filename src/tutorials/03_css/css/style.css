@@ -87,3 +87,24 @@ aside {
 li:first-child {
     font-weight: bold;
 }
+
+/* styling links */
+/* LVHA */
+a:link {
+    color: #1098ad;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #1098ad;
+}
+
+a:hover {
+    color: orangered;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:active {
+    font-style: italic;
+}
