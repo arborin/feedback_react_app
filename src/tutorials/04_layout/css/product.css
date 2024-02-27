@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
 .product-price {
     font-weight: bold;
     font-size: 26px;
+    float: left;
 }
 
 .shiping {
@@ -40,6 +42,13 @@ body {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 25px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.ready {
+    clear: both;
 }
 
 .more-info {
@@ -89,4 +98,20 @@ body {
     height: 30px; */
     letter-spacing: 2px;
     text-align: center;
+
+}
+
+.image-section {
+    float: left;
+    width: 325px;
+}
+
+.price-section {
+    float: left;
+    width: 280px;
+
+}
+
+.details-list {
+    float: left;
 }
