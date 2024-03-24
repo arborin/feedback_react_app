@@ -1,0 +1,53 @@
+.el--1 {
+    background-color: blue;
+}
+
+.el--2 {
+    background-color: rgb(199, 199, 230);
+}
+
+.el--3 {
+    background-color: rgb(124, 202, 124);
+}
+
+.el--4 {
+    background-color: rgb(72, 175, 24);
+}
+
+.el--5 {
+    background-color: rgb(167, 167, 250);
+}
+
+.el--6 {
+    background-color: rgb(235, 157, 41);
+}
+
+.el--7 {
+    background-color: rgb(119, 52, 136);
+}
+
+.el--8 {
+    background-color: rgb(34, 88, 168);
+    height: 150px;
+}
+
+.container {
+    font-family: sans-serif;
+    background-color: #ddd;
+    font-size: 40px;
+    margin: 40px;
+    /* flaxbox */
+    display: flex;
+    /*vertical*/
+    align-items: center;
+    /* ----main axis------*/
+    justify-content: center;
+}
+
+.el--1 {
+    align-self: flex-start;
+}
+
+.el--4 {
+    align-self: stretch;
+}
