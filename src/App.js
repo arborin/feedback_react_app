@@ -1,13 +1,20 @@
+
+import React, { Fragment } from 'react'
+import "./index.css"
+import Header from './Header'
+import Footer from './Footer'
+import Main from './Main'
+
+
+
 export default function App() {
-
-
-
-    export const ThemeProvider = () => {
-
-        return (
-            <h1>Start</h1>
-        );
-    };
+    return (
+        <Fragment>
+            <Header />
+            <Main />
+            <Footer />
+        </Fragment>
+    )
 }
 
 
